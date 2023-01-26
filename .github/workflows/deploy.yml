@@ -1,17 +1,26 @@
-
+on:
+  issue_comment:
+    types: [created]
+    
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
     steps:
-
+      - name: 'Build and publish'
+        run: 'echo Build and publish'
+      
   deploy-dev:
     runs-on: 'ubuntu-latest'
     environment: 'dev'
     needs: build-and-publish
     steps:
+      - name: 'Deploy Dev'
+        run: 'echo Build and publish'
 
   deploy-prod:
     runs-on: 'ubuntu-latest'
     environment: 'prod'
     needs: [build-and-publish, deploy-dev]
     steps:
+      - name: 'Deploy Prod'
+        run: 'echo Build and publish'
