@@ -14,14 +14,14 @@ jobs:
           reaction: rocket
         env:
            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: 'echo Deploy request'
+        run: 'echo Deploy request'
       
   deployment-production:
     runs-on: ubuntu-latest
     environment: production
     steps:
       - name: deploy
-      - run: 'echo Deployed'
+        run: 'echo Deployed'
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"          
         
