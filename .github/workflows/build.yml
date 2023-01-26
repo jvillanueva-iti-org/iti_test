@@ -1,23 +1,18 @@
-on: 
- # Trigger analysis when pushing in master or pull requests, and when creating
-  # a pull request. 
-  push:
-    branches:
-      - '*'
-  pull_request:
-      types: [opened, synchronize, reopened]
+on:
+  issue_comment:
+    types: [created]
+    
 jobs:
-  sonarcloud:
-    name: SonarCloud
+  deploy-check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: acknowledge deployment request to commenter
+        id: check
+        uses: khan/pull-request-comment-trigger@master
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-      
-      # Triggering SonarQube analysis as results of it are required by Quality Gate check.
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
+          trigger: "/deploy"
+          reaction: rocket
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+    outputs:
+      triggered: ${{ steps.check.outputs.triggered }}
