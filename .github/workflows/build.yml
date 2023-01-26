@@ -19,6 +19,8 @@ jobs:
   deployment:
     runs-on: ubuntu-latest
     environment: dev
+    needs: deploy-check
     steps:
       - name: deploy
+        uses: octokit/request-action@v2.x
       - run: 'echo Deployed'
