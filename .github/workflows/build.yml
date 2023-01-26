@@ -3,22 +3,22 @@ on:
     types: [created]
     
 jobs:
-  #deploy-check:
-  #  runs-on: ubuntu-latest
-  #  steps:
-  #    - name: acknowledge deployment request to commenter
-  #      id: check
-  #      uses: khan/pull-request-comment-trigger@master
-  #      with:
-  #        trigger: "/deploy"
-  #        reaction: rocket
-  #      env:
-  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  #    - run: 'Deploy request'
-      
-  deployment:
+  deploy-check:
     runs-on: ubuntu-latest
-    environment: dev
     steps:
-      - name: deploy
-      - run: 'Deployed'
+      - name: acknowledge deployment request to commenter
+        id: check
+        uses: khan/pull-request-comment-trigger@master
+        with:
+          trigger: "/deploy"
+          reaction: rocket
+        env:
+           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: 'Deploy request'
+      
+  #deployment:
+  #  runs-on: ubuntu-latest
+  #  environment: dev
+  #  steps:
+  #    - name: deploy
+  #    - run: 'Deployed'
