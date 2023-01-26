@@ -22,4 +22,5 @@ jobs:
     environment: dev
     steps:
       - name: deploy
+        uses: octokit/request-action@v2.x
       - run: 'Deployed'
