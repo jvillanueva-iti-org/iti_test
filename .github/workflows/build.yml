@@ -13,6 +13,5 @@ jobs:
           trigger: "/deploy"
           reaction: rocket
         env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-    outputs:
-      triggered: ${{ steps.check.outputs.triggered }}
+           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: 'echo Found it!'
