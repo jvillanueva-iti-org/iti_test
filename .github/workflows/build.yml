@@ -22,5 +22,11 @@ jobs:
     environment: dev
     steps:
       - name: deploy
-        uses: octokit/request-action@v2.x
+        id: check
+        uses: khan/pull-request-comment-trigger@master
+        with:
+          trigger: "/deploy"
+          reaction: rocket
+        env:
+           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: 'Deployed'
