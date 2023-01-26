@@ -23,16 +23,5 @@ jobs:
       - name: deploy
       - run: 'echo Deployed'
         env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"      
-      
-  deployment-dev:
-    runs-on: ubuntu-latest
-    environment: dev
-    needs: deploy-check
-    steps:
-      - name: deploy
-      - run: 'echo Deployed'
-        env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-      
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"          
         
