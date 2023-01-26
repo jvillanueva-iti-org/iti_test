@@ -16,7 +16,16 @@ jobs:
            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: 'echo Deploy request'
       
-  deployment:
+  deployment-production:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: deploy
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+      - run: 'echo Deployed'
+      
+  deployment-dev:
     runs-on: ubuntu-latest
     environment: dev
     needs: deploy-check
