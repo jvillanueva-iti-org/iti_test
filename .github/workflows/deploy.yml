@@ -1,1 +1,17 @@
 
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+
+  deploy-dev:
+    runs-on: 'ubuntu-latest'
+    environment: 'dev'
+    needs: build-and-publish
+    steps:
+
+  deploy-prod:
+    runs-on: 'ubuntu-latest'
+    environment: 'prod'
+    needs: [build-and-publish, deploy-dev]
+    steps:
