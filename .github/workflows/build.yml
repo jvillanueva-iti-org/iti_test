@@ -21,6 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: deploy-check
     if: needs.deploy-check.outputs.triggered == 'true'
+    environment: dev
     steps:
       - name: get pull request ref
         id: get_pull_request_ref
