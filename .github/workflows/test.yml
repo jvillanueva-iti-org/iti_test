@@ -13,4 +13,4 @@ jobs:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
           
       - name: Check Git Tag to continue publish
-        run: ./scripts/publish.sh
+        run: ./scripts/public.sh
