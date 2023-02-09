@@ -4,13 +4,20 @@ on:
       - master
 jobs:
   build:
-    name: PoC
+    name: Build and deploy
     runs-on: ubuntu-latest
     steps:
       
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+          
+      - name: Run script file
+        run: |
+          pwd
+          ls -la
+          chmod +x ./scripts/public.sh
+        shell: bash
           
       - name: Check Git Tag to continue publish
         run: ./scripts/public.sh
