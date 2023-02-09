@@ -1,0 +1,22 @@
+name: Build and deploy
+on:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - 'kukumo-doc/**' jobs:
+  build:
+    name: Build and deploy
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run script file
+      run: |
+         pwd
+         ls -la
+         chmod +x scripts/public.sh
+      shell: bash
+    - name: Check Git Tag to continue publish
+      run: scripts/publish.sh
+    - name: Build and deploy
+      run: echo Execute Build and deploy
