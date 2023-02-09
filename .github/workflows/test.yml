@@ -16,8 +16,8 @@ jobs:
         run: |
           pwd
           ls -la
-          chmod +x ./scripts/public.sh
+          chmod +x scripts/public.sh
         shell: bash
           
       - name: Check Git Tag to continue publish
-        run: ./scripts/public.sh
+        run: scripts/public.sh
