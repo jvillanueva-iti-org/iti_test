@@ -3,8 +3,8 @@ on:
   push:
     branches:
       - master
-    paths-ignore:
-      - 'kukumo-doc/**' jobs:
+
+jobs:
   build:
     name: Build and deploy
     runs-on: ubuntu-latest
