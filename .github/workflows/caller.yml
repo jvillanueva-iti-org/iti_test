@@ -5,7 +5,12 @@ on:
 
 jobs:
   job1:
-    uses: ./.github/workflows/called-workflow.yml
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - uses: ./.github/workflows/called-workflow.yml
 
   job2:
     runs-on: ubuntu-latest
