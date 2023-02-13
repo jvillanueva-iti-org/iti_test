@@ -5,6 +5,8 @@ on:
 
 jobs:
   do-it:
+    needs:
+      reusable
     runs-on: ubuntu-latest
 
     steps:
