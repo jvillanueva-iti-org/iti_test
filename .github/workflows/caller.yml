@@ -12,3 +12,7 @@ jobs:
 
       - name: Run a one-line script
         run: echo Hello, world!
+        
+        
+  reusable:
+    uses: ./.github/workflows/reusable.yml
