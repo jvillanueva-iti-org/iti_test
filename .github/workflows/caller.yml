@@ -4,28 +4,22 @@ on:
   workflow_dispatch:
 
 jobs:
-  do-it:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-      
-      - name: Check plugin changes
-        uses: dorny/paths-filter@v2
-        id: changes
-        with:
-          filters: |
-            kukumo-rest:
-              - 'kukumo-plugins/kukumo-rest/**'
-
-
   Prueba:
     strategy:
         matrix:
             plugins: [kukumo-rest, kukumo-api]
     runs-on: ubuntu-latest
-    needs: do-it
     steps:
+      - uses: actions/checkout@v2
+
+      - name: Check plugin changes
+        uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            ${{ matrix.plugins }}:
+              - 'kukumo-plugins/${{ matrix.plugins }}/**'
+      
       - name: Check
         if: jobs.changes.outputs.${{ matrix.plugins }} == 'true'
         env:
