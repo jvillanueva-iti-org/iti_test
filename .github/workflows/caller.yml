@@ -9,8 +9,26 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - uses: ./.github/workflows/reusable.yml
-      - name: Run a one-line script
-        run: echo Hello, world!
-        
+      
+      - name: Check plugin changes
+        uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            kukumo-rest:
+              - 'kukumo-plugins/kukumo-rest/**'
+
+
+  Prueba:
+    strategy:
+        matrix:
+            plugins: [kukumo-rest, kukumo-api]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check
+        if: steps.changes.outputs.maxtrix.plugins == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: echo maxtrix.plugins
   
