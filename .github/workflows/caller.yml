@@ -21,6 +21,6 @@ jobs:
               - 'kukumo-plugins/${{ matrix.plugins }}/**'
       
       - name: Check
-        if: steps.changes.outputs.${{ matrix.plugins }} == 'true'
-        run: echo $steps.changes.outputs.${{ matrix.plugins }} 
+        if: steps.changes.outputs.kukumo-rest == 'true'
+        run: echo ${{ matrix.plugins }} 
   
