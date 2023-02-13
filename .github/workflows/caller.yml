@@ -26,9 +26,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check
-        if: steps.changes.outputs.maxtrix.plugins == 'true'
+        if: steps.changes.outputs.${{ maxtrix.plugins }} == 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: echo maxtrix.plugins
+        run: echo ${{ maxtrix.plugins }}
   
