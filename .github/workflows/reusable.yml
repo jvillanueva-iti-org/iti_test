@@ -7,5 +7,10 @@ jobs:
   triage:
     runs-on: ubuntu-latest
     steps:
-        - run: echo Hello
-          shell: bash
+      - name: Check plugin changes
+        uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            kukumo-rest:
+              - 'kukumo-plugins/kukumo-rest/**'
