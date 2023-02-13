@@ -22,8 +22,5 @@ jobs:
       
       - name: Check
         if: steps.changes.outputs.${{ matrix.plugins }} == 'true'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: echo steps.changes.outputs.${{ matrix.plugins }}
+        run: echo ${{ steps.changes.outputs.${{ matrix.plugins }} }}
   
