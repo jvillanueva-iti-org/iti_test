@@ -4,5 +4,11 @@ on:
   workflow_dispatch:
 
 jobs:
-  call-workflow-2-in-local-repo:
-    uses: ./.github/workflows/reusable.yml
+  do-it:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run a one-line script
+        run: echo Hello, world!
