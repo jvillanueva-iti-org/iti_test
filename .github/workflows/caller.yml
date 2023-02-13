@@ -21,7 +21,7 @@ jobs:
               - 'kukumo-plugins/${{ matrix.plugins }}/**'
       
       - name: Check
-        if: jobs.changes.outputs.${{ matrix.plugins }} == 'true'
+        if: steps.changes.outputs.${{ matrix.plugins }} == 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
