@@ -7,6 +7,7 @@ jobs:
   triage:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Check plugin changes
         uses: dorny/paths-filter@v2
         id: changes
